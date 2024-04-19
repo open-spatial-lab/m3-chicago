@@ -2,19 +2,56 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Program Data Report :: My Block My Hood My City </title>
-    <script src="https://unpkg.com/@open-spatial-lab/full-bundle" type="module" async=""></script>
+    <title>Program Data Report :: My Block My Hood My City</title>
+    <script
+      src="https://unpkg.com/@open-spatial-lab/full-bundle"
+      type="module"
+      async=""
+    ></script>
   </head>
   <body>
-    <div style="padding:1rem;">
-
+    <div style="padding: 1rem">
       <main>
         <sp-theme>
+          <h1>Program Data Report</h1>
+          <h2>My Block My Hood My City</h2>
+          <p>
+            This data report site contains data from My Block My Hood My City's
+            program engagin schools around Chicago. This page contains three
+            main sections to help provide context about the city and key metrics
+            about the outcomes of the program. <br /><br />
+            The first visualization contains two maps - on the left, a reference
+            map has data about CTA transit routes (bus and trains), gang
+            boundaries - which can severely disrupt students ability to access
+            their school, and various demographic data variables from the US
+            Census, such as population and race ethnicity, median household
+            income, and other measures. The default map shows gang boundaries
+            and CTA train lines, and you can toggle on or off other layers by
+            clicking the layers button (eye icon) on the top left of the map.
+            The map on the right shows schools by number of participants in M3's
+            programs, in addition to block club locations.
+            <br /><br />
+            The second section contains statistics about the program outcomes
+            measured on six main metrics: Confidence, Trust, Generosity,
+            Belonging, Empathy, and Comfort. Pariticpants take before and after
+            surveys and rate their perception across these metrics from one
+            (low) to five (high). The average change in each metric is
+            calculated and displayed in the statistics as a percent difference.
+            The table below the summary statistics shows the individual
+            participant data and their change in each metric; the values are
+            averaged if the participant has submitted multiple beofre and after
+            results.
+            <br /><br />
+            Last, the final section shows the average change for each of the
+            participating schools across the six metrics. Each change in this
+            table is in absolute terms on the 5 point scale.
+          </p>
+          <hr style="margin: 4rem 0" />
           <h1>
             Chicago Tract Demography, Block Clubs, and Participants by School
           </h1>
-          <div style="height:80vh; width:100%">
-            <div style="width:49.8%;height:100%;display:inline-block">
+          <div style="height: 80vh; width: 100%">
+            <div style="width: 49.8%; height: 100%; display: inline-block">
               <osl-glmap
                 mapStyle="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
                 legendPosition="top-left"
@@ -141,7 +178,7 @@
                   data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/653ababd25d70300085d5d78"
                 >
                 </osl-map-layer>
-  
+
                 <osl-map-layer
                   legendTitle="CTA Stations"
                   visible="true"
@@ -159,7 +196,7 @@
                   data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/653ab1816cb151000835ae06"
                 >
                 </osl-map-layer>
-  
+
                 <osl-map-layer
                   legendTitle="CTA Bus Lines"
                   visible="false"
@@ -223,8 +260,8 @@
                 ></osl-map-layer>
               </osl-glmap>
             </div>
-  
-            <div style="width:49.8%;height:100%;display:inline-block">
+
+            <div style="width: 49.8%; height: 100%; display: inline-block">
               <osl-glmap
                 mapStyle="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
                 legendPosition="top-left"
@@ -268,7 +305,7 @@
                   data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/653aaffe6cb151000835ae00"
                 >
                 </osl-map-layer>
-  
+
                 <osl-map-layer
                   legendTitle="Participants by School"
                   visible="true"
@@ -286,7 +323,8 @@
               </osl-glmap>
             </div>
           </div>
-          <div style="width:100%;">
+          <hr style="margin: 4rem 0" />
+          <div style="width: 100%">
             <h1>Program Area Outcomes</h1>
             <osl-flex-box breakpoint="lg">
               <osl-stat
@@ -301,7 +339,7 @@
                 data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/654bd48223e4520008e9d1a1"
                 format="percent"
               ></osl-stat>
-  
+
               <osl-stat
                 title="Average Generosity Change"
                 property="Change Generosity"
@@ -327,7 +365,7 @@
                 format="percent"
               ></osl-stat>
             </osl-flex-box>
-  
+
             <osl-data-table
               title="Participant Outcomes"
               maxw="200vw"
@@ -335,8 +373,9 @@
               columns='["ID Number","Age","School","Confidence (Pre)","Confidence (Post)","Trust (Pre)","Trust (Post)","Generosity (Pre)","Generosity (Post)","Belonging (Pre)","Belonging (Post)","Comfort (Pre)","Comfort (Post)","Change Confidence","Change Trust","Change Generosity","Change Belonging","Change Empathy","Change Comfort"]'
             ></osl-data-table>
           </div>
-  
-          <div style="width:100%;">
+
+          <hr style="margin: 4rem 0" />
+          <div style="width: 100%">
             <h1>Schools Outcomes</h1>
             <osl-data-table
               title="School Outcomes"
@@ -347,7 +386,6 @@
           </div>
         </sp-theme>
       </main>
-    
     </div>
   </body>
 </html>
