@@ -1,0 +1,353 @@
+<!-- htmlpage -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Program Data Report :: My Block My Hood My City </title>
+    <script src="https://unpkg.com/@open-spatial-lab/full-bundle" type="module" async=""></script>
+  </head>
+  <body>
+    <div style="padding:1rem;">
+
+      <main>
+        <sp-theme>
+          <h1>
+            Chicago Tract Demography, Block Clubs, and Participants by School
+          </h1>
+          <div style="height:80vh; width:100%">
+            <div style="width:49.8%;height:100%;display:inline-block">
+              <osl-glmap
+                mapStyle="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
+                legendPosition="top-left"
+                showNavigation="true"
+                mapGroup="1"
+              >
+                <osl-map-layer
+                  legendTitle="Gang Boundaries"
+                  visible="true"
+                  geoType="WKB"
+                  geoColumn="geometry"
+                  radiusUnits="pixels"
+                  dataColumn="GANG_NAME"
+                  layer="polygon"
+                  type="categorical"
+                  colorScheme="d3-turbo"
+                  attribution="Chicago Police Department, 2022"
+                  beforeId="waterway"
+                  data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/653ab0386cb151000835ae01"
+                >
+                </osl-map-layer>
+                <osl-map-layer
+                  legendTitle="Median Household Income"
+                  visible="false"
+                  geoType="WKB"
+                  geoColumn="geometry"
+                  radiusUnits="pixels"
+                  dataColumn="Median Household Income (In 2021 Inflation Adjusted Dollars)"
+                  layer="polygon"
+                  type="continuous"
+                  colorScheme="YlGnBu"
+                  attribution="Census ACS 2021 5-year estimates"
+                  beforeId="waterway"
+                  data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/653ababd25d70300085d5d78"
+                >
+                </osl-map-layer>
+                <osl-map-layer
+                  legendTitle="Population"
+                  visible="false"
+                  geoType="WKB"
+                  geoColumn="geometry"
+                  radiusUnits="pixels"
+                  dataColumn="Total Population"
+                  layer="polygon"
+                  type="continuous"
+                  attribution="Census ACS 2021 5-year estimates"
+                  beforeId="waterway"
+                  data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/653ababd25d70300085d5d78"
+                >
+                </osl-map-layer>
+                <osl-map-layer
+                  legendTitle="Black or African American Residents (%)"
+                  visible="false"
+                  geoType="WKB"
+                  geoColumn="geometry"
+                  radiusUnits="pixels"
+                  dataColumn="pct_black"
+                  layer="polygon"
+                  type="continuous"
+                  colorScheme="Greens"
+                  attribution="Census ACS 2021 5-year estimates"
+                  beforeId="waterway"
+                  data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/653ababd25d70300085d5d78"
+                >
+                </osl-map-layer>
+                <osl-map-layer
+                  legendTitle="Latinx or Hispanic Residents (%)"
+                  visible="false"
+                  geoType="WKB"
+                  geoColumn="geometry"
+                  radiusUnits="pixels"
+                  dataColumn="pct_latinx"
+                  layer="polygon"
+                  type="continuous"
+                  colorScheme="Greens"
+                  attribution="Census ACS 2021 5-year estimates"
+                  beforeId="waterway"
+                  data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/653ababd25d70300085d5d78"
+                >
+                </osl-map-layer>
+                <osl-map-layer
+                  legendTitle="Residents of Two or More Races (%)"
+                  visible="false"
+                  geoType="WKB"
+                  geoColumn="geometry"
+                  radiusUnits="pixels"
+                  dataColumn="pct_two_or_more"
+                  layer="polygon"
+                  type="continuous"
+                  colorScheme="Greens"
+                  attribution="Census ACS 2021 5-year estimates"
+                  beforeId="waterway"
+                  data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/653ababd25d70300085d5d78"
+                >
+                </osl-map-layer>
+                <osl-map-layer
+                  legendTitle="White Residents (%)"
+                  visible="false"
+                  geoType="WKB"
+                  geoColumn="geometry"
+                  radiusUnits="pixels"
+                  dataColumn="pct_white"
+                  layer="polygon"
+                  type="continuous"
+                  colorScheme="Greens"
+                  attribution="Census ACS 2021 5-year estimates"
+                  beforeId="waterway"
+                  data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/653ababd25d70300085d5d78"
+                >
+                </osl-map-layer>
+                <osl-map-layer
+                  legendTitle="Percent High School Graduate"
+                  visible="false"
+                  geoType="WKB"
+                  geoColumn="geometry"
+                  method="JNK"
+                  radiusUnits="pixels"
+                  dataColumn="pct_hs"
+                  layer="polygon"
+                  type="continuous"
+                  colorScheme="RdPu"
+                  attribution="Census ACS 2021 5-year estimates"
+                  beforeId="waterway"
+                  data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/653ababd25d70300085d5d78"
+                >
+                </osl-map-layer>
+  
+                <osl-map-layer
+                  legendTitle="CTA Stations"
+                  visible="true"
+                  geoType="WKB"
+                  geoColumn="geometry"
+                  type="static"
+                  radiusUnits="meters"
+                  pointRadiusMinPixels="2"
+                  pointRadiusMaxPixels="10"
+                  staticRadius="100"
+                  staticFill="[0,0,0]"
+                  filled="true"
+                  attribution="CTA"
+                  layer="point"
+                  data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/653ab1816cb151000835ae06"
+                >
+                </osl-map-layer>
+  
+                <osl-map-layer
+                  legendTitle="CTA Bus Lines"
+                  visible="false"
+                  geoType="WKB"
+                  geoColumn="geometry"
+                  type="static"
+                  lineWidthUnits="meters"
+                  lineWidthMinPixels="1"
+                  lineWidthMaxPixels="6"
+                  pointRadiusScale="0.25"
+                  attribution="CTA"
+                  staticLineWidth="50"
+                  staticStroke="[120,120,120]"
+                  filled="false"
+                  stroked="true"
+                  layer="line"
+                  data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/6622958c7093270008aca8f4"
+                >
+                </osl-map-layer>
+                <osl-map-layer
+                  legendTitle="CTA Lines"
+                  visible="true"
+                  geoType="WKB"
+                  geoColumn="geometry"
+                  type="static"
+                  lineWidthUnits="meters"
+                  lineWidthMinPixels="1"
+                  lineWidthMaxPixels="6"
+                  pointRadiusScale="0.25"
+                  attribution="CTA"
+                  staticLineWidth="50"
+                  staticStroke="[0,0,0]"
+                  filled="false"
+                  stroked="true"
+                  layer="line"
+                  data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/654bc3f2e1ad3c000842d50f"
+                >
+                </osl-map-layer>
+                <osl-map-layer
+                  legendTitle="Chicago Neighborhoods"
+                  visible="false"
+                  geoType="WKB"
+                  geoColumn="geometry"
+                  type="static"
+                  attribution="City of Chicago"
+                  textColumn="sec_neigh"
+                  filled="false"
+                  layer="text"
+                  data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/6622c3efd1116f00084284bf"
+                  stroked="false"
+                  staticRadius="100"
+                  textSizeScale="5"
+                  textSize="96"
+                  textMaxWidth="500"
+                  textSizeMaxPixels="20"
+                  geoId="sec_neigh"
+                  geoOperation="centroid"
+                  fixed="true"
+                  textBorderColor="[255,255,255]"
+                  textBorderWidth="1"
+                ></osl-map-layer>
+              </osl-glmap>
+            </div>
+  
+            <div style="width:49.8%;height:100%;display:inline-block">
+              <osl-glmap
+                mapStyle="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
+                legendPosition="top-left"
+                showNavigation="true"
+                mapGroup="1"
+              >
+                <osl-map-layer
+                  legendTitle="Chicago Neighborhoods"
+                  visible="true"
+                  geoType="WKB"
+                  geoColumn="geometry"
+                  type="static"
+                  attribution="City of Chicago"
+                  textColumn="sec_neigh"
+                  filled="false"
+                  layer="text"
+                  data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/6622c3efd1116f00084284bf"
+                  stroked="false"
+                  staticRadius="100"
+                  textSizeScale="5"
+                  textSize="96"
+                  textMaxWidth="500"
+                  textSizeMaxPixels="20"
+                  geoId="sec_neigh"
+                  geoOperation="centroid"
+                  fixed="true"
+                  textBorderColor="[255,255,255]"
+                  textBorderWidth="1"
+                ></osl-map-layer>
+                <osl-map-layer
+                  legendTitle="Block Clubs"
+                  visible="true"
+                  geoType="WKB"
+                  geoColumn="geometry"
+                  layer="point"
+                  pointRadiusScale="20"
+                  type="static"
+                  staticRadius="5"
+                  staticFill="[0,0,0]"
+                  attribution="M3"
+                  data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/653aaffe6cb151000835ae00"
+                >
+                </osl-map-layer>
+  
+                <osl-map-layer
+                  legendTitle="Participants by School"
+                  visible="true"
+                  geoType="WKB"
+                  geoColumn="geometry"
+                  dataColumn="Number of Participants"
+                  layer="point"
+                  pointRadiusScale="40"
+                  type="continuous"
+                  colorScheme="PuYlGn"
+                  attribution="M3"
+                  data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/654bd0d123e4520008e9d1a0"
+                >
+                </osl-map-layer>
+              </osl-glmap>
+            </div>
+          </div>
+          <div style="width:100%;">
+            <h1>Program Area Outcomes</h1>
+            <osl-flex-box breakpoint="lg">
+              <osl-stat
+                title="Average Confidence Change"
+                property="Change Confidence"
+                data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/654bd48223e4520008e9d1a1"
+                format="percent"
+              ></osl-stat>
+              <osl-stat
+                title="Average Trust Change"
+                property="Change Trust"
+                data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/654bd48223e4520008e9d1a1"
+                format="percent"
+              ></osl-stat>
+  
+              <osl-stat
+                title="Average Generosity Change"
+                property="Change Generosity"
+                data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/654bd48223e4520008e9d1a1"
+                format="percent"
+              ></osl-stat>
+              <osl-stat
+                title="Average Belonging Change"
+                property="Change Belonging"
+                data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/654bd48223e4520008e9d1a1"
+                format="percent"
+              ></osl-stat>
+              <osl-stat
+                title="Average Empathy Change"
+                property="Change Empathy"
+                data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/654bd48223e4520008e9d1a1"
+                format="percent"
+              ></osl-stat>
+              <osl-stat
+                title="Average Comfort Change"
+                property="Change Comfort"
+                data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/654bd48223e4520008e9d1a1"
+                format="percent"
+              ></osl-stat>
+            </osl-flex-box>
+  
+            <osl-data-table
+              title="Participant Outcomes"
+              maxw="200vw"
+              data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/653ac865a05c610008d74774"
+              columns='["ID Number","Age","School","Confidence (Pre)","Confidence (Post)","Trust (Pre)","Trust (Post)","Generosity (Pre)","Generosity (Post)","Belonging (Pre)","Belonging (Post)","Comfort (Pre)","Comfort (Post)","Change Confidence","Change Trust","Change Generosity","Change Belonging","Change Empathy","Change Comfort"]'
+            ></osl-data-table>
+          </div>
+  
+          <div style="width:100%;">
+            <h1>Schools Outcomes</h1>
+            <osl-data-table
+              title="School Outcomes"
+              maxw="100vw"
+              data="https://d1mix2z5lvvl4x.cloudfront.net/data-query/654c02ebe360db000886565c"
+              columns='["School","Participants","Average Change Trust","Average Change Generosity","Average Change Confidence","Average Change Belonging","Average Change Empathy","Average Change Comfort"]'
+            ></osl-data-table>
+          </div>
+        </sp-theme>
+      </main>
+    
+    </div>
+  </body>
+</html>
